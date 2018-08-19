@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="7dp"
+    android:layout_marginTop="9dp"
+    android:layout_marginRight="7dp"
+    android:background="@drawable/white_circle_border"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:id="@+id/my_create_first"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/my_create_group_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:text="队名" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/my_create_second"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/my_create_first"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="3dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:text="运动类型:"/>
+
+        <TextView
+            android:id="@+id/my_create_ball_type"
+            android:text="球类名"
+            android:textSize="15sp"
+            android:textColor="@android:color/black"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/my_create_third"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/my_create_second"
+        android:layout_marginLeft="3dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:text="时间:"/>
+
+        <TextView
+            android:id="@+id/my_create_ball_time"
+            android:text="运动时间"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/my_create_fourth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/my_create_third"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="3dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="15sp"
+            android:textColor="@android:color/black"
+            android:text="地点:"/>
+        <TextView
+            android:id="@+id/my_create_ball_address"
+            android:text="运动地点"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="5dp"
+            android:textSize="15sp"
+            android:textColor="@android:color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/my_create_fifth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/my_create_fourth"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="3dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="15sp"
+            android:textColor="@android:color/black"
+            android:text="备注:"/>
+
+        <TextView
+            android:id="@+id/my_create_ball_remark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="4dp"
+            android:textSize="15sp"
+            android:text="约单描述"
+            android:textColor="@android:color/black" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/my_create_fifth"
+        android:layout_marginTop="8dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/my_create_head_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/nav_icon"/>
+
+        <TextView
+            android:id="@+id/my_create_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"
+            android:textColor="@android:color/black"
+            android:text="创建人名" />
+
+
+        <TextView
+            android:id="@+id/my_create_ball_pnow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp"
+            android:layout_marginLeft="15dp"
+            android:text="已加入人数"/>
+
+        <TextView
+            android:id="@+id/my_create_xie_gang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textColor="@android:color/black"
+            android:text="/"/>
+
+        <TextView
+            android:id="@+id/my_create_ball_pnum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp"
+            android:textColor="@android:color/black"
+            android:text="最大人数"/>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/my_create_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/my_create_first"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="45dp"
+        android:text="未完成"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        android:background="@null" />
+
+    <Button
+        android:id="@+id/my_create_detail"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/my_create_first"
+        android:layout_marginLeft="255dp"
+        android:layout_marginTop="120dp"
+        android:layout_gravity="center_vertical"
+        android:background="@color/orange"
+        android:text="约单详情"/>
+    <Button
+        android:id="@+id/my_create_cancel"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/my_create_first"
+        android:layout_marginLeft="320dp"
+        android:layout_marginTop="120dp"
+        android:layout_gravity="center_vertical"
+        android:background="@color/orange"
+        android:text="取消约单"/>
+
+</RelativeLayout>

@@ -1,0 +1,119 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F2F2F2"
+    tools:context="com.example.cjh.aboutball.activity.LoginActivity">
+
+    <com.example.cjh.aboutball.util.TitleLayout
+        android:id="@+id/detail_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/white_circle_border">
+
+            <EditText
+                android:id="@+id/origin_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:background="@null"
+                android:hint="请输入原密码"
+                android:textSize="20sp"
+                android:textColorHint="#CCCCCC"
+                android:textCursorDrawable="@drawable/edit_cursor"
+                android:maxLength="20"
+                android:inputType="textPassword"
+                android:maxLines="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/white_circle_border">
+
+            <EditText
+                android:id="@+id/new_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:background="@null"
+                android:hint="请输入新密码"
+                android:textSize="20sp"
+                android:textColorHint="#CCCCCC"
+                android:textCursorDrawable="@drawable/edit_cursor"
+                android:maxLength="20"
+                android:inputType="textPassword"
+                android:maxLines="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/white_circle_border">
+
+            <EditText
+                android:id="@+id/confirm_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:background="@null"
+                android:hint="确认密码"
+                android:textSize="20sp"
+                android:textColorHint="#CCCCCC"
+                android:textCursorDrawable="@drawable/edit_cursor"
+                android:maxLength="20"
+                android:inputType="textPassword"
+                android:maxLines="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="提示：密码最大长度为20个字符"
+                android:textSize="17sp"
+                android:textColor="#666666"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/finish_pwd"
+            android:layout_width="150dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_style"
+            android:layout_marginTop="30dp"
+            android:text="完成"
+            android:textSize="18sp"
+            android:textColor="#fff" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

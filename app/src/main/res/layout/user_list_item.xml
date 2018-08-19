@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <ImageView
+        android:id="@+id/user_list_item_image_left"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="center_vertical"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:src="@drawable/ic_myinfo"
+        android:layout_height="40dp" />
+
+    <TextView
+        android:id="@+id/user_list_item_name"
+        android:layout_width="0dp"
+        android:layout_weight="5"
+        android:layout_height="wrap_content"
+        android:text="我的信息"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="15dp" />
+
+    <ImageView
+        android:id="@+id/user_list_item_image_right"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="35dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/ic_right"
+        android:layout_marginRight="10dp" />
+
+</LinearLayout>

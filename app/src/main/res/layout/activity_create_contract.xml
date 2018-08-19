@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F2F2"
+    android:orientation="vertical"
+    tools:context="com.example.cjh.aboutball.activity.CreateContractActivity">
+
+    <com.example.cjh.aboutball.util.TitleLayout
+        android:id="@+id/detail_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:textSize="19sp"
+            android:textColor="@android:color/black"
+            android:text="基本信息"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(必填)"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/orange"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+ <!--   <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/orange"
+        android:contentDescription="@string/app_name" />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:text="运动类型:"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"/>
+
+        <Spinner
+            android:id="@+id/create_type"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="40dp"
+            android:entries="@array/ball_type"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+ <!--   <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/orange"
+        android:contentDescription="@string/app_name" />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_gravity="center"
+            android:text="运动时间:"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"/>
+
+        <EditText
+            android:id="@+id/create_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="46dp"
+            android:focusable="false"
+            android:textSize="16sp"
+            android:textCursorDrawable="@null"
+            android:background="@null"
+            android:hint="请选择运动时间"/>
+
+    </LinearLayout>
+
+<!--    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/orange"
+        android:contentDescription="@string/app_name" />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:text="运动地点:"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"/>
+
+        <Spinner
+            android:id="@+id/create_address"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_gravity="center"
+            android:entries="@array/ball_address"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+<!--
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/orange"
+        android:contentDescription="@string/app_name" />
+-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:text="运动人数:"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"/>
+
+        <Spinner
+            android:id="@+id/create_pnum"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_gravity="center"
+            android:entries="@array/ball_pnum"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+<!--
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/orange"
+        android:contentDescription="@string/app_name" />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:text="队伍名:"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/create_group_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="62dp"
+            android:background="@null"
+            android:inputType="text"
+            android:hint="请输入队名"
+            android:maxLength="10"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#fff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textSize="19sp"
+            android:textColor="@android:color/black"
+            android:text="约单简介"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(非必填)"
+            android:textColor="@color/orange"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+<!--    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/orange"
+        android:contentDescription="@string/app_name" />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#fff">
+
+        <EditText
+            android:id="@+id/create_intro"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@null"
+            android:padding="5dp"
+            android:maxLength="100"
+            android:maxLines="3"
+            android:inputType="text"
+            android:hint="介绍你的约单，让别人更了解你！(不超过100字)"
+            android:gravity="top"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/create_finish"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_style"
+        android:textSize="18sp"
+        android:textColor="#fff"
+        android:text="完成创建"/>
+
+</LinearLayout>

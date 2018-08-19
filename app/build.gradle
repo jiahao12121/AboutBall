@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "27.0.3"
+    defaultConfig {
+        applicationId "com.example.cjh.aboutball"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories{
+    flatDir{
+        dirs 'libs' //就是你放aar的目录地址
+
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
+    compile 'com.android.support:design:26.0.0-alpha1'
+    compile 'org.litepal.android:core:1.4.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.github.codbking:PickTime:v1.0.1'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.githang:status-bar-compat:latest.integration'
+    compile files('libs/MobCommons-2018.0704.1311.jar')
+    compile files('libs/MobTools-2018.0704.1157.jar')
+    compile files('libs/SMSSDK-3.2.1.jar')
+    compile files('libs/SDKWrapper-2018.0201.1609.jar')
+    testCompile 'junit:junit:4.12'
+    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
+}

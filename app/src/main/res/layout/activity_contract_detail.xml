@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F2F2"
+    tools:context="com.example.cjh.aboutball.activity.ContractDetailActivity">
+
+    <com.example.cjh.aboutball.util.TitleLayout
+        android:id="@+id/detail_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/start_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/detail_title">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:textColor="#666666"
+            android:textSize="19sp"
+            android:text="项目信息"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/zero_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:layout_below="@+id/start_row">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="15dp"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:text="队名:"/>
+
+        <TextView
+            android:id="@+id/detail_group_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:text="队名"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="5dp"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/first_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:layout_below="@+id/zero_row">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="15dp"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:text="项目:"/>
+
+        <TextView
+            android:id="@+id/detail_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:text="运动类型"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="5dp"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/second_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:layout_below="@+id/first_row"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="4dp"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:text="时间:"/>
+
+        <TextView
+            android:id="@+id/detail_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="运动时间"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="5dp"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/third_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:layout_below="@+id/second_row">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="4dp"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:text="地点:"/>
+
+        <TextView
+            android:id="@+id/detail_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="运动地点"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="5dp"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fourth_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:background="#fff"
+        android:layout_below="@+id/third_row">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="4dp"
+            android:textSize="16sp"
+            android:text="已参与人数/预期人数:"/>
+
+        <TextView
+            android:id="@+id/detail_pnow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="5dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/xie_gang2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:text="/"/>
+
+        <TextView
+            android:id="@+id/detail_pnum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:text="2"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/detail_enter"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="120dp"
+        android:background="@drawable/ic_enter"/>
+
+    <LinearLayout
+        android:id="@+id/first_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="#fff"
+        android:gravity="center_vertical"
+        android:layout_below="@+id/fourth_row">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:textColor="#666666"
+            android:textSize="19sp"
+            android:text="发起人"/>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/fifth_row"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#fff"
+        android:layout_below="@+id/first_title">
+
+        <TextView
+            android:id="@+id/detail_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="125dp"
+            android:textColor="@android:color/black"
+            android:text="用户名"
+            android:textSize="15sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sixth_row"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#fff"
+        android:layout_below="@+id/fifth_row">
+
+        <TextView
+            android:id="@+id/detail_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="125dp"
+            android:textColor="@android:color/black"
+            android:text="男"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/detail_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@android:color/black"
+            android:text="20岁"
+            android:textSize="15sp"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/second_title"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginTop="15dp"
+        android:background="#fff"
+        android:gravity="center_vertical"
+        android:layout_below="@+id/sixth_row">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:textColor="#666666"
+            android:textSize="19sp"
+            android:text="约单介绍"/>
+    </LinearLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/detail_head_icon"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="30dp"
+        android:layout_above="@+id/second_title"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:src="@drawable/nav_icon"/>
+
+    <LinearLayout
+        android:id="@+id/introduce"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="#fff"
+        android:layout_below="@+id/second_title"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <TextView
+            android:id="@+id/detail_introduce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:layout_marginLeft="10dp"
+            android:textSize="16sp"
+            android:text="约单介绍"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/third_title"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:background="#fff"
+        android:layout_marginTop="15dp"
+        android:gravity="center_vertical"
+        android:layout_below="@+id/introduce">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textColor="#666666"
+            android:textSize="19sp"
+            android:text="参与用户"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@id/third_title"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:background="#fff">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/user_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+</RelativeLayout>
