@@ -23,12 +23,10 @@ import java.util.List;
 
 public class MyContractActivity extends AppCompatActivity {
 
-    private List<MyContractListItem> itemList = new ArrayList<>();
-
     private TextView titleText;
-
     private Button titleBack;
 
+    private List<MyContractListItem> itemList = new ArrayList<>();
     private String nowUserId;
 
     public String getNowUserId() {
@@ -57,7 +55,7 @@ public class MyContractActivity extends AppCompatActivity {
         initItem();
         Intent intent = getIntent();
         setNowUserId(intent.getStringExtra("user_id"));
-        Log.d("MyContractActivity", getNowUserId());
+
         MyContractListItemAdapter adapter = new MyContractListItemAdapter(MyContractActivity.this,
                 R.layout.my_contract_list_item, itemList);
         ListView listView = (ListView) findViewById(R.id.list_view_my_contract);

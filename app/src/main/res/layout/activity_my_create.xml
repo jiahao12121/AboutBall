@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F2F2F2"
-    android:orientation="vertical" >
+    android:background="#F2F2F2">
 
     <com.example.cjh.aboutball.util.TitleLayout
         android:id="@+id/detail_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <TextView
+        android:id="@+id/no_create_contract"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:visibility="invisible"
+        android:textSize="16sp"
+        android:text="空空如也，赶快去创建约单吧！"/>
+
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/my_create_swipe_refresh"
+        android:layout_below="@+id/detail_title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -27,4 +37,4 @@
 
 
 
-</LinearLayout>
+</RelativeLayout>

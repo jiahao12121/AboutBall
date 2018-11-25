@@ -18,20 +18,24 @@ import org.litepal.crud.DataSupport;
 
 import java.util.List;
 
+import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.QueryListener;
+import cn.bmob.v3.listener.UpdateListener;
+
 public class ChangePwdActivity extends AppCompatActivity {
 
     private TextView titleText;
-
     private EditText originPwd;
-
     private EditText newPwd;
-
     private EditText confirmPwd;
-
     private Button finishPwd;
 
     private String nowUserId;
-
+    private String origin_pwd;
+    private String new_pwd;
+    private String confirm_pwd;
     public String getNowUserId() {
         return nowUserId;
     }
@@ -59,9 +63,9 @@ public class ChangePwdActivity extends AppCompatActivity {
                 originPwd.setError(null);
                 newPwd.setError(null);
                 confirmPwd.setError(null);
-                String origin_pwd = originPwd.getText().toString();
-                String new_pwd = newPwd.getText().toString();
-                String confirm_pwd = confirmPwd.getText().toString();
+                origin_pwd = originPwd.getText().toString();
+                new_pwd = newPwd.getText().toString();
+                confirm_pwd = confirmPwd.getText().toString();
                 boolean cancel = false;
                 View focusView = null;
 
@@ -86,21 +90,34 @@ public class ChangePwdActivity extends AppCompatActivity {
                 if(cancel){
                     focusView.requestFocus();   //有错误则显示出错信息
                 }else{
-                    List<User> result = DataSupport.where("id = ?", getNowUserId()).find(User.class);
-                    if(origin_pwd.equals(result.get(0).getUserPwd())){
-                        if(new_pwd.equals(confirm_pwd)){
-                            User user = new User();
-                            user.setUserPwd(new_pwd);
-                            user.updateAll("id = ?", getNowUserId());
-                            Toast.makeText(ChangePwdActivity.this, "密码修改成功!", Toast.LENGTH_SHORT).show();
-                            ChangePwdActivity.this.finish();
-                        }else{
-                            Toast.makeText(ChangePwdActivity.this, "两次密码输入不一致，请重新输入!", Toast.LENGTH_SHORT).show();
+                    BmobQuery<User> query = new BmobQuery<User>();
+                    query.getObject(getNowUserId(), new QueryListener<User>() {
+                        @Override
+                        public void done(User user, BmobException e) {
+                            if(e == null){
+                                if(origin_pwd.equals(user.getUserPwd())){
+                                    if(new_pwd.equals(confirm_pwd)){
+                                        User user1 = new User();
+                                        user1.setUserPwd(new_pwd);
+                                        user1.update(getNowUserId(), new UpdateListener() {
+                                            @Override
+                                            public void done(BmobException e) {
+                                                Toast.makeText(ChangePwdActivity.this, "密码修改成功!", Toast.LENGTH_SHORT).show();
+                                                ChangePwdActivity.this.finish();
+                                            }
+                                        });
+                                    }else{
+                                        Toast.makeText(ChangePwdActivity.this, "两次密码输入不一致，请重新输入!", Toast.LENGTH_SHORT).show();
+                                    }
+                                }else{
+                                    Toast.makeText(ChangePwdActivity.this, "原密码错误，请重新输入!", Toast.LENGTH_SHORT).show();
+                                    originPwd.requestFocus();
+                                }
+                            }else{
+                                Toast.makeText(ChangePwdActivity.this, "查询失败!" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }else{
-                        Toast.makeText(ChangePwdActivity.this, "原密码错误，请重新输入!", Toast.LENGTH_SHORT).show();
-                        originPwd.requestFocus();
-                    }
+                    });
                 }
             }
         });

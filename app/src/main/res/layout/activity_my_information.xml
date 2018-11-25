@@ -18,7 +18,36 @@
            android:layout_height="5dp"
            android:background="@color/orange"
            android:contentDescription="@string/app_name" />-->
-    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#fff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center"
+            android:text="头像"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/info_head_icon"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="150dp"
+            android:src="@drawable/ic_info_icon"/>
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:contentDescription="@string/app_name" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -27,7 +56,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="20dp"
             android:layout_gravity="center"
             android:text="用户名"
             android:textColor="@android:color/black"
@@ -43,7 +72,7 @@
             android:maxLines="1"
             android:background="@null"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="47dp"
+            android:layout_marginLeft="70dp"
             android:textSize="18sp"/>
         
 
@@ -63,17 +92,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="20dp"
             android:text="性别"
             android:textColor="@android:color/black"
             android:textSize="18sp"/>
 
         <Spinner
             android:id="@+id/select_sex"
-            android:layout_width="200dp"
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="60dp"
+            android:layout_marginLeft="80dp"
             android:entries="@array/sex"
             android:textSize="18sp" />
 
@@ -92,7 +121,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="20dp"
             android:layout_gravity="center"
             android:text="年龄"
             android:textColor="@android:color/black"
@@ -100,12 +129,85 @@
 
         <Spinner
             android:id="@+id/select_age"
-            android:layout_width="200dp"
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="60dp"
+            android:layout_marginLeft="80dp"
             android:entries="@array/age"
             android:textSize="18sp" />
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:contentDescription="@string/app_name" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center"
+            android:text="爱好"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/select_hobby"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="87.5dp"
+            android:layout_gravity="center_vertical"
+            android:text="篮球"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:contentDescription="@string/app_name" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center"
+            android:text="信用值"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/user_credit"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="100"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="70dp"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/user_credit_tip"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="91dp"
+            android:src="@drawable/ic_tip" />
 
     </LinearLayout>
 
@@ -137,12 +239,6 @@
 
     </LinearLayout>
 
-    <!--    <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:background="@color/orange"
-            android:contentDescription="@string/app_name" />-->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -157,6 +253,7 @@
             android:maxLength="100"
             android:maxLines="3"
             android:inputType="text"
+            android:textCursorDrawable="@drawable/edit_cursor"
             android:gravity="top"
             android:textSize="16sp" />
     </LinearLayout>

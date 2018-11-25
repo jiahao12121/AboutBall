@@ -10,20 +10,23 @@ import android.widget.TextView;
 
 import com.example.cjh.aboutball.R;
 import com.example.cjh.aboutball.activity.ContractDetailActivity;
+
 import com.example.cjh.aboutball.activity.InforPersonalActivity;
-import com.example.cjh.aboutball.db.Contract;
 import com.example.cjh.aboutball.db.User;
 import com.example.cjh.aboutball.db.UserEnterContract;
-
-import org.litepal.crud.DataSupport;
-
+import com.example.cjh.aboutball.util.ImageLoaderApplication;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import java.util.List;
 
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.QueryListener;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
- * Created by cjh on 2018/8/7.
- */
+ * Created by cjh on 2018/8/7.*/
+
+
 
 public class ContractEnteredUserAdapter extends RecyclerView.Adapter<ContractEnteredUserAdapter.ViewHolder>{
 
@@ -70,13 +73,25 @@ public class ContractEnteredUserAdapter extends RecyclerView.Adapter<ContractEnt
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         UserEnterContract uec = UserEnteredList.get(position);
         Log.d("ContractUserAdapter", uec.getUserId() + "");
         /*由用户Id找到对应头像*/
-        List<User> result = DataSupport.where("id = ?", uec.getUserId() + "").find(User.class);
-        holder.userHeadIcon.setImageResource(result.get(0).getHeadIcon());
-        holder.userName.setText(result.get(0).getUserName());
+        BmobQuery<User> query = new BmobQuery<User>();
+        query.getObject(uec.getUserId(), new QueryListener<User>() {
+            @Override
+            public void done(User user, BmobException e) {
+                if(e == null){
+                    holder.userName.setText(user.getUserName());
+                    if(user.getHeadIcon() != null){
+                        ImageLoader imageLoader = ImageLoader.getInstance();
+                        imageLoader.displayImage(user.getHeadIcon().getFileUrl(), holder.userHeadIcon, ImageLoaderApplication.options);
+                    }
+                }else{
+                    Log.d("ContractEnteredUser", "error");
+                }
+            }
+        });
     }
 
     @Override

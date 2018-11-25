@@ -12,8 +12,25 @@
 
     <ListView
         android:id="@+id/list_view_safe"
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <LinearLayout
+        android:id="@+id/log_off"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:background="#fff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:text="注销账户"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -1,17 +1,16 @@
 package com.example.cjh.aboutball.db;
 
-import org.litepal.crud.DataSupport;
+import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.datatype.BmobFile;
 
 /**
  * Created by cjh on 2018/7/27.
  * 用户表
  */
 
-public class User extends DataSupport{
+public class User extends BmobObject{
 
-    private int id;
-
-    private int headIcon;
+    private BmobFile headIcon;
 
     private String userTel;
 
@@ -21,18 +20,17 @@ public class User extends DataSupport{
 
     private String userSex;
 
-    private int userAge;
+    private Integer userAge;
+
+    private String userHobby;
 
     private String userIntro;
 
+    private Integer userCredit;
+
     public User(){}
 
-    public User(int headIcon, String userTel, String userName, String userPwd){
-        this.headIcon = headIcon;
-        this.userTel = userTel;
-        this.userName = userName;
-        this.userPwd = userPwd;
-    }
+
 
     public String getUserIntro() {
         return userIntro;
@@ -50,28 +48,20 @@ public class User extends DataSupport{
         this.userSex = userSex;
     }
 
-    public int getUserAge() {
+    public Integer getUserAge() {
         return userAge;
     }
 
-    public void setUserAge(int userAge) {
+    public void setUserAge(Integer userAge) {
         this.userAge = userAge;
     }
 
-    public int getHeadIcon() {
+    public BmobFile getHeadIcon() {
         return headIcon;
     }
 
-    public void setHeadIcon(int headIcon) {
+    public void setHeadIcon(BmobFile headIcon) {
         this.headIcon = headIcon;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getUserName() {
@@ -96,5 +86,21 @@ public class User extends DataSupport{
 
     public void setUserTel(String userTel) {
         this.userTel = userTel;
+    }
+
+    public Integer getUserCredit() {
+        return userCredit;
+    }
+
+    public void setUserCredit(Integer userCredit) {
+        this.userCredit = userCredit;
+    }
+
+    public String getUserHobby() {
+        return userHobby;
+    }
+
+    public void setUserHobby(String userHobby) {
+        this.userHobby = userHobby;
     }
 }

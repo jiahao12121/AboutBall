@@ -13,6 +13,7 @@ import com.example.cjh.aboutball.R;
 
 /**
  * Created by cjh on 2018/7/29.
+ * 自定义顶部标题栏
  */
 
 public class TitleLayout extends LinearLayout {

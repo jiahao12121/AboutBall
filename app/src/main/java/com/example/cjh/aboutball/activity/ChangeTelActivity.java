@@ -15,43 +15,37 @@ import android.widget.Toast;
 import com.example.cjh.aboutball.R;
 import com.example.cjh.aboutball.db.User;
 import com.example.cjh.aboutball.util.CountDownButton;
+import com.githang.statusbar.StatusBarCompat;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.mob.MobSDK;
 
-import org.litepal.crud.DataSupport;
-
 import java.util.List;
 
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.QueryListener;
+import cn.bmob.v3.listener.UpdateListener;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
 public class ChangeTelActivity extends AppCompatActivity {
 
     private TextView titleText;
-
     private TextView nowTel;
-
     private EditText newTel;
-
     private EditText code;
-
     private CountDownButton getCode;
-
     private Button finishTel;
-
     private View focusView = null;
 
     private String telephone;
-
     private GoogleApiClient client;
-
     private String nowUserId;
-
     public String getNowUserId() {
         return nowUserId;
     }
-
     public void setNowUserId(String nowUserId) {
         this.nowUserId = nowUserId;
     }
@@ -60,6 +54,7 @@ public class ChangeTelActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_tel);
+        StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.orange));
         titleText = (TextView) findViewById(R.id.title_text);
         titleText.setText("修改手机号");
         nowTel = (TextView) findViewById(R.id.now_tel);
@@ -69,36 +64,55 @@ public class ChangeTelActivity extends AppCompatActivity {
         finishTel = (Button) findViewById(R.id.finish_tel);
         Intent intent = getIntent();
         setNowUserId(intent.getStringExtra("user_id"));
-        nowTel.setText(DataSupport.where("id = ?", getNowUserId()).find(User.class).get(0).getUserTel());
+        BmobQuery<User> query = new BmobQuery<User>();
+        query.getObject(getNowUserId(), new QueryListener<User>() {
+            @Override
+            public void done(User user, BmobException e) {
+                if(e == null){
+                    nowTel.setText(user.getUserTel());
+                }else{
+                    Toast.makeText(ChangeTelActivity.this, "查询1失败!" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         getCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 telephone = newTel.getText().toString();
-                List<User> result = DataSupport.select("userTel")
-                        .where("userTel = ?", telephone)
-                        .find(User.class);
-                if(telephone.equals("")){
-                    newTel.setError("手机号码不能为空!");
-                    focusView = newTel;
-                    focusView.requestFocus();
-                }else if (telephone.length() != 11) {
-                    newTel.setError("手机号码不合法!");
-                    focusView = newTel;
-                    focusView.requestFocus();
-                }else if(result.size() == 0){
-                    /*判断倒计时是否结束，避免重复点击*/
-                    if(getCode.isFinish()){
-                        getCode.setEnabled(true);
-                        getCode.start();
-                        SMSSDK.getVerificationCode("86", telephone);
-                    }else{
-                        getCode.setEnabled(false);
+                BmobQuery<User> query = new BmobQuery<User>();
+                query.addWhereEqualTo("userTel", telephone);
+                query.findObjects(new FindListener<User>() {
+                    @Override
+                    public void done(List<User> list, BmobException e) {
+                        if(e == null){
+                            if(telephone.equals("")){
+                                newTel.setError("手机号码不能为空!");
+                                focusView = newTel;
+                                focusView.requestFocus();
+                            }else if (telephone.length() != 11) {
+                                newTel.setError("手机号码不合法!");
+                                focusView = newTel;
+                                focusView.requestFocus();
+                            }else if(list.size() == 0){
+                            /*判断倒计时是否结束，避免重复点击*/
+                                if(getCode.isFinish()){
+                                    getCode.setEnabled(true);
+                                    getCode.start();
+                                    SMSSDK.getVerificationCode("86", telephone);
+                                }else{
+                                    getCode.setEnabled(false);
+                                }
+                            }else{
+                                newTel.setError("该号码已被注册!");
+                                focusView = newTel;
+                                focusView.requestFocus();
+                            }
+                        }else{
+                            Toast.makeText(ChangeTelActivity.this, "查询2失败!" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }else{
-                    newTel.setError("该号码已被注册!");
-                    focusView = newTel;
-                    focusView.requestFocus();
-                }
+                });
             }
         });
 
@@ -152,11 +166,20 @@ public class ChangeTelActivity extends AppCompatActivity {
             Object data=msg.obj;
             if(result==SMSSDK.RESULT_COMPLETE){  /*回调成功*/
                 if(event==SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE){  /*通过验证*/
-                    Toast.makeText(ChangeTelActivity.this,"手机号修改成功！",Toast.LENGTH_SHORT).show();
                     User user = new User();
                     user.setUserTel(telephone);
-                    user.updateAll("id = ?", getNowUserId());
-                    ChangeTelActivity.this.finish();
+                    user.update(getNowUserId(), new UpdateListener() {
+                        @Override
+                        public void done(BmobException e) {
+                            if(e == null){
+                                Toast.makeText(ChangeTelActivity.this,"手机号修改成功！",Toast.LENGTH_SHORT).show();
+                                ChangeTelActivity.this.finish();
+                            }else{
+                                Toast.makeText(ChangeTelActivity.this, "查询3失败!" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
                 }else if(event == SMSSDK.EVENT_GET_VERIFICATION_CODE){  /*发送成功*/
                     Toast.makeText(ChangeTelActivity.this, "验证码已发送", Toast.LENGTH_SHORT).show();
                 }

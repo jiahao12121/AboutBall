@@ -12,6 +12,7 @@
         android:layout_height="wrap_content" />
 
 
+<!--
     <LinearLayout
         android:id="@+id/first_title"
         android:layout_width="match_parent"
@@ -30,52 +31,35 @@
             android:textSize="19sp"
             android:text="基本信息"/>
     </LinearLayout>
+-->
 
     <LinearLayout
         android:id="@+id/first_row"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="100dp"
         android:background="#fff"
-        android:layout_below="@+id/first_title">
+        android:layout_below="@+id/detail_title">
 
         <TextView
             android:id="@+id/personal_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="125dp"
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="35dp"
             android:textColor="@android:color/black"
             android:text="用户名"
-            android:textSize="15sp"/>
+            android:textSize="20sp"/>
+
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/second_row"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#fff"
-        android:layout_below="@+id/first_row">
-
-        <TextView
-            android:id="@+id/personal_sex"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:layout_marginLeft="125dp"
-            android:textColor="@android:color/black"
-            android:text="男"
-            android:textSize="15sp"/>
-
-        <TextView
-            android:id="@+id/personal_age"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:layout_marginLeft="10dp"
-            android:textColor="@android:color/black"
-            android:text="20岁"
-            android:textSize="15sp"/>
-    </LinearLayout>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/personal_head_icon"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@+id/detail_title"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_info_icon"/>
 
 
     <LinearLayout
@@ -85,7 +69,118 @@
         android:layout_marginTop="20dp"
         android:background="#fff"
         android:gravity="center_vertical"
+        android:layout_below="@+id/first_row">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:textColor="#666666"
+            android:textSize="19sp"
+            android:text="基本信息"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/second_row"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:background="#fff"
+        android:orientation="vertical"
+        android:layout_below="@+id/second_title"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="20dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_myinfo"/>
+            <TextView
+                android:id="@+id/personal_sex"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="男"
+                android:layout_gravity="center_vertical"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"/>
+            <TextView
+                android:layout_width="5dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text=","
+                android:layout_gravity="center_vertical"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"/>
+            <TextView
+                android:id="@+id/personal_age"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="21岁"
+                android:layout_gravity="center_vertical"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="#F2F2F2"
+            android:contentDescription="@string/app_name" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="20dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_hobby"/>
+
+            <TextView
+                android:id="@+id/personal_hobby"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="无"
+                android:layout_gravity="center_vertical"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"/>
+
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/third_title"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginTop="20dp"
+        android:background="#fff"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
         android:layout_below="@+id/second_row">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -94,23 +189,16 @@
             android:textColor="#666666"
             android:textSize="19sp"
             android:text="个人简介"/>
+
     </LinearLayout>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/personal_head_icon"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="30dp"
-        android:layout_above="@+id/second_title"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:src="@drawable/nav_icon"/>
 
     <LinearLayout
         android:id="@+id/introduce"
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:background="#fff"
-        android:layout_below="@+id/second_title"
+        android:layout_below="@+id/third_title"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
         <TextView
@@ -124,7 +212,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/third_title"
+        android:id="@+id/fourth_title"
         android:layout_width="match_parent"
         android:layout_height="36dp"
         android:background="#fff"
@@ -143,7 +231,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_below="@id/third_title"
+        android:layout_below="@id/fourth_title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#fff">

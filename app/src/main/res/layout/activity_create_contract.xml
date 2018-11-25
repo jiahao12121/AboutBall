@@ -37,15 +37,9 @@
 
     </LinearLayout>
 
- <!--   <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@color/orange"
-        android:contentDescription="@string/app_name" />-->
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="48dp"
         android:background="#fff">
 
         <TextView
@@ -68,17 +62,17 @@
 
     </LinearLayout>
 
- <!--   <ImageView
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="1dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:background="@color/orange"
-        android:contentDescription="@string/app_name" />-->
+        android:background="#F2F2F2"
+        android:contentDescription="@string/app_name" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="48dp"
         android:background="#fff">
 
         <TextView
@@ -104,17 +98,17 @@
 
     </LinearLayout>
 
-<!--    <ImageView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:background="@color/orange"
-        android:contentDescription="@string/app_name" />-->
+        android:background="#F2F2F2"
+        android:contentDescription="@string/app_name" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="48dp"
         android:background="#fff">
 
         <TextView
@@ -137,19 +131,17 @@
 
     </LinearLayout>
 
-<!--
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="1dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:background="@color/orange"
+        android:background="#F2F2F2"
         android:contentDescription="@string/app_name" />
--->
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="48dp"
         android:background="#fff">
 
         <TextView
@@ -171,18 +163,18 @@
             android:textSize="16sp" />
 
     </LinearLayout>
-<!--
+
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="1dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:background="@color/orange"
-        android:contentDescription="@string/app_name" />-->
+        android:background="#F2F2F2"
+        android:contentDescription="@string/app_name" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="48dp"
         android:background="#fff">
 
         <TextView
@@ -201,9 +193,10 @@
             android:layout_gravity="center"
             android:layout_marginLeft="62dp"
             android:background="@null"
+            android:textCursorDrawable="@drawable/edit_cursor"
             android:inputType="text"
             android:hint="请输入队名"
-            android:maxLength="10"
+            android:maxLength="15"
             android:textSize="16sp" />
 
     </LinearLayout>
@@ -251,6 +244,7 @@
             android:maxLength="100"
             android:maxLines="3"
             android:inputType="text"
+            android:textCursorDrawable="@drawable/edit_cursor"
             android:hint="介绍你的约单，让别人更了解你！(不超过100字)"
             android:gravity="top"
             android:textSize="16sp" />

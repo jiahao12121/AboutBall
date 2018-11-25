@@ -12,6 +12,47 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#fff"
+        android:layout_marginTop="5dp">
+
+        <EditText
+            android:id="@+id/search_by_groupname"
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:hint="请输入队名"
+            android:textSize="17sp"
+            android:textColorHint="#CCCCCC"
+            android:textCursorDrawable="@drawable/edit_cursor"
+            android:background="@null"
+            android:maxLength="15"
+            android:maxLines="1"
+            android:imeActionId="@+id/search"
+            android:imeActionLabel="搜索"
+            android:imeOptions="actionUnspecified"/>
+
+        <ImageButton
+            android:id="@+id/search_contract"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/ic_search"/>
+
+        <Spinner
+            android:id="@+id/search_by_type"
+            android:layout_width="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:entries="@array/search_ball_type"
+            android:textSize="17sp" />
+
+
+    </LinearLayout>
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/main_swipe_refresh"
         android:layout_width="match_parent"

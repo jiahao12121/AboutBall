@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -20,13 +21,12 @@ import java.util.List;
 
 public class SafeCenterActivity extends AppCompatActivity {
 
-    private List<SafeListItem> itemList = new ArrayList<>();
-
     private TextView titleText;
-
     private Button titleBack;
+    private LinearLayout logOff;
 
     private String nowUserId;
+    private List<SafeListItem> itemList = new ArrayList<>();
 
     public String getNowUserId() {
         return nowUserId;
@@ -43,7 +43,8 @@ public class SafeCenterActivity extends AppCompatActivity {
         StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.orange));
         titleText = (TextView) findViewById(R.id.title_text);
         titleBack = (Button) findViewById(R.id.title_back);
-        titleText.setText("安全中心");
+        logOff = (LinearLayout) findViewById(R.id.log_off);
+        titleText.setText("设置");
         titleBack.setVisibility(View.VISIBLE);
         Intent intent = getIntent();
         setNowUserId(intent.getStringExtra("user_id"));
@@ -69,6 +70,15 @@ public class SafeCenterActivity extends AppCompatActivity {
                         startActivity(intent1);
                         break;
                 }
+            }
+        });
+        logOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //跳转到登录界面时销毁其他所有活动
+                Intent intent2 = new Intent(SafeCenterActivity.this, LoginActivity.class)
+                        .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent2);
             }
         });
     }

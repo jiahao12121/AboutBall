@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/user_c_enter_head_icon"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/ic_info_icon" />
+
+    <TextView
+        android:id="@+id/user_c_enter_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:textSize="17sp"
+        android:text="创建人名"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/sign_on"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:textSize="14sp"
+        android:text="给他签到"
+        android:textColor="@color/orange"/>
+
+</LinearLayout>

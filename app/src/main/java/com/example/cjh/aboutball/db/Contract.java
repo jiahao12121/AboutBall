@@ -2,15 +2,15 @@ package com.example.cjh.aboutball.db;
 
 import org.litepal.crud.DataSupport;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * Created by cjh on 2018/8/2.
  */
 
-public class Contract extends DataSupport {
+public class Contract extends BmobObject {
 
-    private int id;
-
-    private int userId;
+    private String userId;
 
     private String groupName;
 
@@ -22,23 +22,23 @@ public class Contract extends DataSupport {
 
     private String ballRemark;
 
-    private int nowPum;
+    private Integer nowPnum;
 
-    private int maxPum;
+    private Integer maxPnum;
 
-    private int status; //默认为0(未完成)
+    private Integer status; //默认为0(未完成)
 
     public Contract(){
     }
-    public Contract(int userId, String groupName, String ballTime, String ballType, String ballAddress, String ballRemark, int nowPum, int maxPum){
+    public Contract(String userId, String groupName, String ballTime, String ballType, String ballAddress, String ballRemark, Integer nowPnum, Integer maxPnum){
         this.userId = userId;
         this.groupName = groupName;
         this.ballTime = ballTime;
         this.ballType = ballType;
         this.ballAddress = ballAddress;
         this.ballRemark = ballRemark;
-        this.nowPum = nowPum;
-        this.maxPum = maxPum;
+        this.nowPnum = nowPnum;
+        this.maxPnum = maxPnum;
     }
 
     public String getBallAddress() {
@@ -81,43 +81,35 @@ public class Contract extends DataSupport {
         this.groupName = groupName;
     }
 
-    public int getId() {
-        return id;
+    public Integer getMaxPnum() {
+        return maxPnum;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setMaxPnum(Integer maxPnum) {
+        this.maxPnum = maxPnum;
     }
 
-    public int getMaxPum() {
-        return maxPum;
+    public Integer getNowPnum() {
+        return nowPnum;
     }
 
-    public void setMaxPum(int maxPum) {
-        this.maxPum = maxPum;
+    public void setNowPnum(Integer nowPnum) {
+        this.nowPnum = nowPnum;
     }
 
-    public int getNowPum() {
-        return nowPum;
-    }
-
-    public void setNowPum(int nowPum) {
-        this.nowPum = nowPum;
-    }
-
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 }

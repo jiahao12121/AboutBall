@@ -2,47 +2,49 @@ package com.example.cjh.aboutball.db;
 
 import org.litepal.crud.DataSupport;
 
+import cn.bmob.v3.BmobObject;
+
 /** Created by cjh on 2018/8/7.
  *
  */
 
-public class UserEnterContract extends DataSupport {
+public class UserEnterContract extends BmobObject {
 
-    private int id;
+    private String contractId;
 
-    private int contractId;
+    private String userId;
 
-    private int userId;
+    private Integer userStatus;
 
     public UserEnterContract(){
 
     }
-    public UserEnterContract(int contractId, int userId){
+    public UserEnterContract(String contractId, String userId){
         this.contractId = contractId;
         this.userId = userId;
     }
 
-    public int getContractId() {
+    public String getContractId() {
         return contractId;
     }
 
-    public void setContractId(int contractId) {
+    public void setContractId(String contractId) {
         this.contractId = contractId;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public Integer getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(Integer userStatus) {
+        this.userStatus = userStatus;
     }
 }

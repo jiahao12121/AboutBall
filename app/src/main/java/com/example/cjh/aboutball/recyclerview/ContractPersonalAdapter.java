@@ -16,8 +16,9 @@ import java.util.List;
 
 
 /**
- * Created by cjh on 2018/8/15.
- */
+ * Created by cjh on 2018/8/15.*/
+
+
 
 public class ContractPersonalAdapter extends RecyclerView.Adapter<ContractPersonalAdapter.ViewHolder> {
 
@@ -26,13 +27,9 @@ public class ContractPersonalAdapter extends RecyclerView.Adapter<ContractPerson
     static class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView ballTime;
-
         TextView ballType;
-
         TextView ballAddress;
-
         TextView maxPum;
-
         View ContractView;      //保存RecyclerView子项，用于点击后跳转
 
         public ViewHolder(View view){
@@ -55,14 +52,17 @@ public class ContractPersonalAdapter extends RecyclerView.Adapter<ContractPerson
         final ViewHolder holder = new ViewHolder(view);
         holder.ContractView.setOnClickListener(new View.OnClickListener() {
             @Override
-            /*点击某约单子项后跳转到约单详情界面*/
+        /*点击某约单子项后跳转到约单详情界面*/
+
             public void onClick(View v) {
                 InforPersonalActivity inforPersonalActivity = (InforPersonalActivity) v.getContext();
                 int position = holder.getAdapterPosition();
                 Contract contract = ContractList.get(position);
                 Intent intent = new Intent(v.getContext(), ContractDetailActivity.class);
-                intent.putExtra("contract_id", contract.getId()+"");
+                //传入所点击约单的ID和当前用户ID
+                intent.putExtra("contract_id", contract.getObjectId());
                 intent.putExtra("user_id", inforPersonalActivity.getNowUserId());
+                intent.putExtra("is_hide_enter", "no");
                 v.getContext().startActivity(intent);
             }
         });
@@ -75,7 +75,7 @@ public class ContractPersonalAdapter extends RecyclerView.Adapter<ContractPerson
         holder.ballTime.setText(contract.getBallTime().split(" ")[0]);
         holder.ballType.setText(contract.getBallType());
         holder.ballAddress.setText(contract.getBallAddress());
-        holder.maxPum.setText(contract.getMaxPum() + "人");
+        holder.maxPum.setText(contract.getMaxPnum() + "人");
     }
 
     @Override

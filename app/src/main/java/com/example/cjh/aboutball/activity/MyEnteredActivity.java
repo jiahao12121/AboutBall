@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cjh.aboutball.R;
 import com.example.cjh.aboutball.db.Contract;
@@ -20,19 +22,21 @@ import org.litepal.crud.DataSupport;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.QueryListener;
+
 public class MyEnteredActivity extends AppCompatActivity {
 
-
-    private List<Contract> contractList = new ArrayList<>();
-
     private SwipeRefreshLayout swipeRefresh;
-
     private TextView titleText;
-
     private RecyclerView recyclerView;
+    private TextView contractTip;
 
     private ContractMyEnteredAdapter adapter;
 
+    private List<Contract> contractList = new ArrayList<>();
     private String nowUserId;
 
     public String getNowUserId() {
@@ -51,29 +55,55 @@ public class MyEnteredActivity extends AppCompatActivity {
         titleText = (TextView) findViewById(R.id.title_text);
         swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.my_entered_swipe_refresh);
         recyclerView = (RecyclerView) findViewById(R.id.my_entered_recycler_view);
+        contractTip = (TextView) findViewById(R.id.no_entered_contract);
         swipeRefresh.setColorSchemeResources(R.color.orange);
+        titleText.setText("我参与的");
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 refresh();
             }
         });
-        titleText.setText("我参与的");
         Intent intent = getIntent();
         setNowUserId(intent.getStringExtra("user_id"));
-        Log.d("MyEnteredActivity", getNowUserId());
-        List<UserEnterContract> result = DataSupport.where("userId = ?", getNowUserId()).find(UserEnterContract.class);
-        for(int i = 0; i < result.size(); i++){
-            Contract contract = DataSupport.where("id = ?", result.get(i).getContractId() + "").find(Contract.class).get(0);
-            contractList.add(contract);
-        }
-        /*设置我创建的约单RecyclerView*/
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        adapter = new ContractMyEnteredAdapter(contractList);
-        recyclerView.setAdapter(adapter);
+        QueryMyEnteredContract();
     }
 
+
+    public void QueryMyEnteredContract(){
+        contractList.clear();
+        BmobQuery<UserEnterContract> query = new BmobQuery<UserEnterContract>();
+        query.addWhereEqualTo("userId", getNowUserId());
+        query.findObjects(new FindListener<UserEnterContract>() {
+            @Override
+            public void done(List<UserEnterContract> list, BmobException e) {
+                if(e == null){
+                    if(list.size() == 0){
+                        bindEnteredRecycleView();
+                        contractTip.setVisibility(View.VISIBLE);
+                    }else{
+                        for(int i = 0; i < list.size(); i++){
+                            BmobQuery<Contract> query1 = new BmobQuery<Contract>();
+                            query1.getObject(list.get(i).getContractId(), new QueryListener<Contract>() {
+                                @Override
+                                public void done(Contract contract, BmobException e) {
+                                    if(e == null){
+                                        contractList.add(contract);
+                                        /*设置我参与的约单RecyclerView*/
+                                        bindEnteredRecycleView();
+                                    }else{
+                                        Toast.makeText(MyEnteredActivity.this, "查询1失败！" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                        }
+                    }
+                }else{
+                    Toast.makeText(MyEnteredActivity.this, "查询2失败！" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
     private void refresh(){
         new Thread(new Runnable() {
             @Override
@@ -83,21 +113,21 @@ public class MyEnteredActivity extends AppCompatActivity {
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }
+                QueryMyEnteredContract();
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        contractList.clear();
-                        List<UserEnterContract> result = DataSupport.where("userId = ?", getNowUserId()).find(UserEnterContract.class);
-                        for(int i = 0; i < result.size(); i++){
-                            Contract contract = DataSupport.where("id = ?", result.get(i).getContractId() + "").find(Contract.class).get(0);
-                            contractList.add(contract);
-                        }
-                        adapter = new ContractMyEnteredAdapter(contractList);
-                        recyclerView.setAdapter(adapter);
                         swipeRefresh.setRefreshing(false);
                     }
                 });
             }
         }).start();
+    }
+
+    private void bindEnteredRecycleView(){
+        LinearLayoutManager layoutManager = new LinearLayoutManager(MyEnteredActivity.this);
+        recyclerView.setLayoutManager(layoutManager);
+        adapter = new ContractMyEnteredAdapter(contractList);
+        recyclerView.setAdapter(adapter);
     }
 }

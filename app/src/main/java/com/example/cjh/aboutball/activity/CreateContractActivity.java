@@ -20,45 +20,44 @@ import com.codbking.widget.OnSureLisener;
 import com.codbking.widget.bean.DateType;
 import com.example.cjh.aboutball.R;
 import com.example.cjh.aboutball.db.Contract;
-import com.example.cjh.aboutball.db.User;
-import com.example.cjh.aboutball.fragment.FragmentMain;
+
 import com.githang.statusbar.StatusBarCompat;
 
-import org.litepal.crud.DataSupport;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
+
+
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.SaveListener;
 
 public class CreateContractActivity extends AppCompatActivity {
 
     private TextView titleText;
-
     private EditText createDate;
-
     private Spinner createType;
-
     private Spinner createAddress;
-
     private Spinner createPnum;
-
     private EditText createGroupName;
-
     private EditText createIntro;
-
     private Button createFinish;
 
     private String time = "";
-
     private String type;
-
     private String address;
-
     private int pnum;
-
     private String groupname;
-
     private String introduce;
+
+    private String nowUserId;
+
+    public String getNowUserId() {
+        return nowUserId;
+    }
+
+    public void setNowUserId(String nowUserId) {
+        this.nowUserId = nowUserId;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -155,37 +154,48 @@ public class CreateContractActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(introduce)){
                     introduce = "无";
                 }
-                AlertDialog.Builder dialog = new AlertDialog.Builder(CreateContractActivity.this);
-                dialog.setTitle("提示");
-                dialog.setMessage("您确认要创建该约单吗？");
-                dialog.setCancelable(false);
-                dialog.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                AlertDialog dialog = new AlertDialog.Builder(CreateContractActivity.this)
+                .setTitle("提示")
+                .setMessage("您确认要创建该约单吗？")
+                .setCancelable(false)
+                .setPositiveButton("确认", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Toast.makeText(CreateContractActivity.this, "创建约单成功!", Toast.LENGTH_SHORT).show();
+                        Intent intent = getIntent();
+                        setNowUserId(intent.getStringExtra("user_id"));
                         Contract contract = new Contract();
-                        Intent intent1 = getIntent();
-                        int userid = Integer.parseInt(intent1.getStringExtra("user_id"));
-                        contract.setUserId(userid);
+                        contract.setUserId(getNowUserId());
                         contract.setBallTime(time);
                         contract.setBallType(type);
                         contract.setBallAddress(address);
-                        contract.setMaxPum(pnum);
-                        contract.setNowPum(1);
+                        contract.setMaxPnum(pnum);
+                        contract.setNowPnum(1);
                         contract.setGroupName(groupname);
                         contract.setBallRemark(introduce);
-                        contract.save();
-                        MainActivity.setFlag("create");
-                        CreateContractActivity.this.finish();
+                        contract.setStatus(0);
+                        contract.save(new SaveListener<String>() {
+                            @Override
+                            public void done(String s, BmobException e) {
+                                if(e == null){
+                                    MainActivity.setFlag("create");
+                                    CreateContractActivity.this.finish();
+                                }else{
+                                    Toast.makeText(CreateContractActivity.this, "查询失败！" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
                     }
-                });
-                dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                })
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                     }
-                });
+                }).create();
                 dialog.show();
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextSize(18);
+                dialog.getButton(DialogInterface.BUTTON_NEGATIVE).setTextSize(18);
             }
         });
     }

@@ -19,6 +19,10 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by cjh on 2018/7/28.
+ * 底部导航栏
+ */
 
 public class BottomBar extends View {
 
